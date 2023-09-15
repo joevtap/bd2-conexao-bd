@@ -2,7 +2,7 @@ from utils import console_clear, get_numeric_input
 
 
 class MainView():
-    def __init__(self, main_controller, controller=None):
+    def __init__(self, main_controller, _):
         self.__controller = main_controller
 
     def run(self):
@@ -11,7 +11,7 @@ class MainView():
         print("1. CRUD for City")
         print("2. Exit", end="\n\n")
 
-        option = get_numeric_input(">>>", 0)
+        option = get_numeric_input(">>> ", 0)
 
         if option == 1:
             self.__controller.change_view("city")
