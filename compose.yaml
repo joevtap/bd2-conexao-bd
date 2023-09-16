@@ -4,6 +4,8 @@ services:
     build: 
       context: .
       dockerfile: Dockerfile
-    image: app_crud_python
+    env_file:
+      - .env
+    image: ${IMAGE}
     stdin_open: true
     tty: true
