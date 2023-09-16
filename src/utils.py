@@ -13,7 +13,7 @@ def get_numeric_input(message, default_value=None):
         return default_value
 
 
-def get_choosen_dam():
+def get_chosen_dam():
     parser = argparse.ArgumentParser(description='CRUD APP')
     parser.add_argument('--dam', type=str, default='orm',
                         help='Database Access Method to use (orm or driver)')
