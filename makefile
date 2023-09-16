@@ -1,4 +1,4 @@
-.PHONY: build, run, compose, compose-down
+.PHONY: build, run, compose, down
 
 IMAGE_NAME = "app_crud_python"
 
