@@ -1,4 +1,4 @@
-from utils import get_chosen_dam
+from argparser import ArgParser
 
 
 class CountryModel():
@@ -12,7 +12,7 @@ class CountryModel():
             # "driver": CountryPsycopg2DAO
         }
 
-        self.__DAO = self.__available_DAOs[get_chosen_dam()]()
+        self.__DAO = self.__available_DAOs[ArgParser().get_args().dam]()
 
     def __str__(self):
         return f"country_id: {self.__country_id}\n" \

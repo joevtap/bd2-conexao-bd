@@ -1,6 +1,4 @@
-import datetime
-from typing import List, Dict
-from utils import get_chosen_dam
+from argparser import ArgParser
 
 
 class CityModel():
@@ -15,7 +13,7 @@ class CityModel():
             # "driver": CityPsycopg2DAO
         }
 
-        self.__DAO = self.__available_DAOs[get_chosen_dam()]()
+        self.__DAO = self.__available_DAOs[ArgParser().get_args().dam]()
 
     def __str__(self):
         return f"city_id: {self.__city_id}\n" \
@@ -52,7 +50,7 @@ class CityModel():
 
         return self
 
-    def list_by_country_id(self, country_id) -> List[Dict[str or int or datetime]]:
+    def list_by_country_id(self, country_id):
         data = self.__DAO.list_by_country_id(country_id)
 
         return data

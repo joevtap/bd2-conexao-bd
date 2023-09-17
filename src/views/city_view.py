@@ -1,4 +1,5 @@
-from utils import console_clear, get_chosen_dam, get_numeric_input
+from argparser import ArgParser
+from utils import console_clear, get_numeric_input
 
 
 class CityView():
@@ -10,7 +11,7 @@ class CityView():
         console_clear()
         print("CRUD for table City", end="\n")
         print(
-            f"Current Database Access Method and DAO: {get_chosen_dam()}", end="\n\n")
+            f"Current Database Access Method and DAO: {ArgParser().get_args().dam}", end="\n\n")
         print(40 * "=", end="\n\n")
         print("Choose an option:", end="\n\n")
         print("1. Insert a new city")
