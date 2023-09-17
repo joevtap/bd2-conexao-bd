@@ -6,7 +6,7 @@ services:
       dockerfile: Dockerfile
     env_file:
       - .env
-    image: ${IMAGE}
+    image: app_crud_python
     stdin_open: true
     tty: true
     depends_on:
@@ -16,6 +16,11 @@ services:
     image: postgres:latest
     env_file:
       - .env
+    volumes:
+      - db-data:/var/lib/postgresql/data
     ports:
       - ${DB_PORT}:5432
     restart: always
+
+volumes:
+  db-data:
