@@ -2,8 +2,6 @@ from argparser import ArgParser
 from datetime import datetime
 from utils import console_clear, get_numeric_input
 
-# TODO: CONFERE TUDO AI, NAO SEI SE TA CERTO
-
 
 class CityView():
     def __init__(self, main_controller, controller):
@@ -125,8 +123,11 @@ class CityView():
 
             list = self.__controller.list_by_country_name(country)
 
-            for city in list:
-                print(city)
+            if list is None:
+                print(f"Country {country} not found!")
+            else:
+                for city in list:
+                    print(city)
 
             input("Press enter to continue...")
 

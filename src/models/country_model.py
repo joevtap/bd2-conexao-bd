@@ -1,4 +1,5 @@
 from argparser import ArgParser
+from daos import CountryPsycopg2DAO, CountrySQLAlchemyDAO
 
 
 class CountryModel():
@@ -8,8 +9,8 @@ class CountryModel():
         self.__last_update = None
 
         self.__available_DAOs = {
-            # "orm": CountrySQLAlchemyDAO,
-            # "driver": CountryPsycopg2DAO
+            "orm": CountrySQLAlchemyDAO,
+            "driver": CountryPsycopg2DAO
         }
 
         self.__DAO = self.__available_DAOs[ArgParser().get_args().dam]()
@@ -27,6 +28,9 @@ class CountryModel():
 
     def read_by_name(self, country):
         data = self.__DAO.read_by_name(country)
+
+        if data is None:
+            return None
 
         self.__country_id = data['country_id']
         self.__country = data['country']
