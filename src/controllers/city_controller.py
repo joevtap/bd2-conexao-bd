@@ -19,10 +19,14 @@ class CityController():
         # return self.__DAO.list_by_country_id(country.get_country_id())
         pass
 
-    def update(self, city, data) -> CityModel:
-        curr_city = CityModel().read_by_name(city)
-        return curr_city.update(data)
+    def update(self, city_id, city, country_id, last_update) -> CityModel:
+        curr_city = CityModel().read_by_id(city_id)
+        return curr_city.update(city, country_id, last_update)
 
     def delete(self, city: str) -> bool:
         city = CityModel().read_by_name(city)
+
+        if city is None:
+            return None
+
         return city.delete()

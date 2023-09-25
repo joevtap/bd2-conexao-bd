@@ -27,58 +27,95 @@ class CityView():
         option = get_numeric_input(">>> ", 0)
 
         if option == 1:
+            console_clear()
             print("Insert a new city")
 
-            city_id = get_numeric_input("City ID: ", 0) 
+            city_id = get_numeric_input("City ID: ")
             city = input("City: ")
-            country_id = get_numeric_input("Country ID: ", 0)
+            country_id = get_numeric_input("Country ID: ")
             last_update = datetime.now()
 
             if (city_id is None or not int) or (city is None or not str) or (country_id is None or not int):
                 self.run()
 
-            print(self.__controller.create(city_id, city, country_id, last_update))
-            input("Press enter to continue...")
-            self.run()
+            try:
+                print(self.__controller.create(
+                    city_id, city, country_id, last_update))
+            except Exception as e:
+                print(e)
+            finally:
+                input("Press enter to continue...")
+                self.run()
 
         elif option == 2:
+            console_clear()
             print("Update a city")
 
-            city_id = get_numeric_input("City ID: ", 0)
+            city_id = get_numeric_input("City ID: ")
+            print(f"Trying to update city with ID: {city_id}")
             city = input("City: ")
-            country_id = get_numeric_input("Country ID: ", 0)
+            country_id = get_numeric_input("Country ID: ")
             last_update = datetime.now()
 
             if (city_id is None or not int) or (city is None or not str) or (country_id is None or not int):
                 self.run()
-            print(self.__controller.update(city_id, city, country_id, last_update))
-            input("Press enter to continue...")
-            self.run()
+
+            try:
+                found = self.__controller.update(
+                    city_id, city, country_id, last_update)
+                if found is None:
+                    print(f"City \"{city}\" does not exist!")
+                else:
+                    print(found)
+            except Exception as e:
+                print(e)
+            finally:
+                input("Press enter to continue...")
+                self.run()
 
         elif option == 3:
+            console_clear()
             print("Delete a city")
 
-            city_id = get_numeric_input("City ID: ", 0)
+            city = input("City: ")
 
-            if city_id is None or not int:
+            if city is None or not int:
                 self.run()
-            print(self.__controller.delete(city_id))
-            print("Press enter to continue...")
-            self.run()
+
+            try:
+                found = self.__controller.delete(city)
+                if found is None:
+                    print(f"City \"{city}\" does not exist!")
+                else:
+                    print(found)
+            except Exception as e:
+                print(e)
+            finally:
+                input("Press enter to continue...")
+                self.run()
 
         elif option == 4:
+            console_clear()
             print("Show city data")
-
             city = input("City: ")
 
             if city is None or not str:
                 self.run()
 
-            print(self.__controller.read_by_name(city))
-            input("Press enter to continue...")
-            self.run()
+            try:
+                found = self.__controller.read_by_name(city)
+                if found is None:
+                    print(f"City \"{city}\" not found!")
+                else:
+                    print(found)
+            except Exception as e:
+                print(e)
+            finally:
+                input("Press enter to continue...")
+                self.run()
 
         elif option == 5:
+            console_clear()
             print("List cities in country")
 
             country = input("Country: ")
@@ -92,7 +129,7 @@ class CityView():
                 print(city)
 
             input("Press enter to continue...")
-            
+
             self.run()
 
         elif option == 6:

@@ -36,9 +36,8 @@ class CitySQLAlchemyDAO():
             self.__session.add(data)
             self.__session.commit()
 
-        except sqlalchemy.exc.IntegrityError:
-            self.__session.rollback()
-            return None
+        except Exception as e:
+            raise e
 
         if data is None:
             return None
@@ -46,8 +45,12 @@ class CitySQLAlchemyDAO():
             return self.__parse_data(data)
 
     def read_by_id(self, city_id):
-        data = self.__session.query(self.__city).filter(
-            self.__city.city_id == city_id).first()
+        try:
+            data = self.__session.query(self.__city).filter(
+                self.__city.city_id == city_id).first()
+
+        except Exception as e:
+            raise e
 
         if data is None:
             return None
@@ -56,8 +59,11 @@ class CitySQLAlchemyDAO():
             return self.__parse_data(data)
 
     def read_by_name(self, city):
-        data = self.__session.query(self.__city).filter(
-            self.__city.city == city).first()
+        try:
+            data = self.__session.query(self.__city).filter(
+                self.__city.city == city).first()
+        except Exception as e:
+            raise e
 
         if data is None:
             return None
@@ -66,8 +72,11 @@ class CitySQLAlchemyDAO():
             return self.__parse_data(data)
 
     def list_by_country_id(self, country_id):
-        data = self.__session.query(self.__city).filter(
-            self.__city.country_id == country_id).all()
+        try:
+            data = self.__session.query(self.__city).filter(
+                self.__city.country_id == country_id).all()
+        except Exception as e:
+            raise e
 
         if data is None:
             return None
@@ -76,8 +85,11 @@ class CitySQLAlchemyDAO():
             return [self.__parse_data(city) for city in data]
 
     def update(self, city_id, city, country_id, last_update):
-        data = self.__session.query(self.__city).filter(
-            self.__city.city_id == city_id).first()
+        try:
+            data = self.__session.query(self.__city).filter(
+                self.__city.city_id == city_id).first()
+        except Exception as e:
+            raise e
 
         if data is None:
             return None
@@ -91,8 +103,11 @@ class CitySQLAlchemyDAO():
             return self.__parse_data(data)
 
     def delete(self, city_id):
-        data = self.__session.query(self.__city).filter(
-            self.__city.city_id == city_id).first()
+        try:
+            data = self.__session.query(self.__city).filter(
+                self.__city.city_id == city_id).first()
+        except Exception as e:
+            raise e
 
         if data is None:
             return None

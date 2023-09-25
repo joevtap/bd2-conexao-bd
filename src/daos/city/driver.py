@@ -27,19 +27,11 @@ class CityPsycopg2DAO():
 
             cursor.close()
 
-        except psycopg2.errors.UniqueViolation:
-            cursor.close()
-            return None
-
-        except psycopg2.errors.ForeignKeyViolation:
-            cursor.close()
-            return None
-
-        except:
-            cursor.close()
-            return None
+        except Exception as e:
+            raise e
 
         if data is None:
+            print("a")
             return None
         else:
             return self.__parse_data(data)
@@ -56,9 +48,8 @@ class CityPsycopg2DAO():
 
             cursor.close()
 
-        except:
-            cursor.close()
-            return None
+        except Exception as e:
+            raise e
 
         if data is None:
             return None
@@ -77,9 +68,8 @@ class CityPsycopg2DAO():
 
             cursor.close()
 
-        except:
-            cursor.close()
-            return None
+        except Exception as e:
+            raise e
 
         if data is None:
             return None
@@ -98,9 +88,8 @@ class CityPsycopg2DAO():
 
             cursor.close()
 
-        except:
-            cursor.close()
-            return None
+        except Exception as e:
+            raise e
 
         if data is None:
             return None
@@ -122,17 +111,8 @@ class CityPsycopg2DAO():
 
             cursor.close()
 
-        except psycopg2.errors.UniqueViolation:
-            cursor.close()
-            return None
-
-        except psycopg2.errors.ForeignKeyViolation:
-            cursor.close()
-            return None
-
-        except:
-            cursor.close()
-            return None
+        except Exception as e:
+            raise e
 
         if data is None:
             return None
@@ -153,9 +133,8 @@ class CityPsycopg2DAO():
 
             cursor.close()
 
-        except:
-            cursor.close()
-            return None
+        except Exception as e:
+            raise e
 
         if data is None:
             return None
