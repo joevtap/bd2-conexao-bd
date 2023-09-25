@@ -127,7 +127,7 @@ class CityView():
                 print(f"Country {country} not found!")
             else:
                 for city in list:
-                    print(city)
+                    print(city["city"])
 
             input("Press enter to continue...")
 
