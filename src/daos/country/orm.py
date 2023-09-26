@@ -11,7 +11,7 @@ class CountrySQLAlchemyDAO():
             password=os.getenv('POSTGRES_PASSWORD'),
             host=os.getenv('DB_HOST'),
             port=os.getenv('DB_PORT'),
-            database='pagila'
+            database=os.getenv('APP_DB')
         )
 
         self.__engine = sqlalchemy.create_engine(url, echo=False)

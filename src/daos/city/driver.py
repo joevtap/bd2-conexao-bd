@@ -7,7 +7,7 @@ class CityPsycopg2DAO():
         self.__connection = psycopg2.connect(
             host=os.getenv('DB_HOST'),
             port=os.getenv('DB_PORT'),
-            database='pagila',
+            database=os.getenv('APP_DB'),
             user=os.getenv('POSTGRES_USER'),
             password=os.getenv('POSTGRES_PASSWORD')
         )
