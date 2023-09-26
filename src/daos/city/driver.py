@@ -31,7 +31,6 @@ class CityPsycopg2DAO():
             raise e
 
         if data is None:
-            print("a")
             return None
         else:
             return self.__parse_data(data)
