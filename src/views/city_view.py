@@ -28,12 +28,17 @@ class CityView():
             console_clear()
             print("Insert a new city")
 
-            city_id = get_numeric_input("City ID: ")
-            city = input("City: ")
-            country_id = get_numeric_input("Country ID: ")
-            last_update = datetime.now()
+            try:
+                city_id = get_numeric_input("City ID: ")
+                city = input("City: ")
+                country_id = get_numeric_input("Country ID: ")
+                last_update = datetime.now()
 
-            if (city_id is None or not int) or (city is None or not str) or (country_id is None or not int):
+                if (city_id is None or not int) or (city is None or not str) or (country_id is None or not int):
+                    self.run()
+            except Exception as e:
+                print(f"Error: {e}")
+                input("Press enter to continue...")
                 self.run()
 
             try:
@@ -49,13 +54,18 @@ class CityView():
             console_clear()
             print("Update a city")
 
-            city_id = get_numeric_input("City ID: ")
-            print(f"Trying to update city with ID: {city_id}")
-            city = input("City: ")
-            country_id = get_numeric_input("Country ID: ")
-            last_update = datetime.now()
+            try:
+                city_id = get_numeric_input("City ID: ")
+                print(f"Trying to update city with ID: {city_id}")
+                city = input("City: ")
+                country_id = get_numeric_input("Country ID: ")
+                last_update = datetime.now()
 
-            if (city_id is None or not int) or (city is None or not str) or (country_id is None or not int):
+                if (city_id is None or not int) or (city is None or not str) or (country_id is None or not int):
+                    self.run()
+            except Exception as e:
+                print(f"Error: {e}")
+                input("Press enter to continue...")
                 self.run()
 
             try:
